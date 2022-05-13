@@ -9,15 +9,8 @@ const App: React.FC = () => {
   const [weightField, setWeightField] = useState<number>(0);
 
   function handleCalculateImc() {
-    if (heightField || weightField) {
-        if (!heightField) {
-          alert('Digite a sua altura!');
-         
-          
-        } else if (!weightField) {
-          alert('Digite o seu peso!');
-          
-        }
+    if (heightField && weightField) {
+       
     } 
     else {
       alert('Insira ao menos uma altura e peso.')
