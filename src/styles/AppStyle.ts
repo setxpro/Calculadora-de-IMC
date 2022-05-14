@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { LevelImc } from '../types/imc';
 
 export const Container = styled.div`
   
@@ -18,7 +19,7 @@ export const Content = styled.div`
     max-width: 900px;
     margin: auto;
 `;
-export const ContentLeftSide = styled.div`
+export const ContentLeftSide = styled.div<{btnDisabled: LevelImc | null}>`
     flex: 1;
     margin-right: 40px;
 
@@ -54,12 +55,14 @@ export const ContentLeftSide = styled.div`
         padding: 15px 0;
         width: 100%;
 
+        opacity: ${props => props.btnDisabled === null ? '1' : '.7'};
+
         cursor: pointer;
         margin-top: 40px;
 
         transition: all .5s ease;
         &:hover {
-            opacity: .8;
+            opacity: .7;
         }
     }
 `;

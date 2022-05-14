@@ -15,6 +15,7 @@ const App: React.FC = () => {
 
   const [showSingleLevel, setShowSingleLevel] = useState<LevelImc | null>(null)
 
+
   function handleCalculateImc() {
     if (heightField && weightField) {
       setShowSingleLevel(calculateImc(heightField, weightField))
@@ -40,7 +41,7 @@ const App: React.FC = () => {
           </C.HeaderContainer>
         </C.Header>
         <C.Content>
-            <C.ContentLeftSide>
+            <C.ContentLeftSide btnDisabled={showSingleLevel}>
               <h1>Calcule o seu IMC.</h1>
               <p>IMC é a sigla para Índice de Massa Corpórea, parâmetro adotado pela (OMS) Organização Mundial da Saúde para calcular o peso ideal de cada pessoa.</p>
 
@@ -49,6 +50,7 @@ const App: React.FC = () => {
               placeholder="Digite a sua Altura. Ex 1.5 (em metros)"
               value={heightField > 0 ? heightField : ''}
               onChange={e => setHeightField(parseFloat(e.target.value))}
+              disabled={showSingleLevel !== null ? true : false}
               />
 
               <input 
@@ -56,9 +58,10 @@ const App: React.FC = () => {
                 placeholder="Digite o seu peso. Ex 65.3 (Em KG)"
                 value={weightField > 0 ? weightField : ''}
                 onChange={e => setWeightField(parseFloat(e.target.value))}
+                disabled={showSingleLevel !== null ? true : false}
               />
 
-              <button onClick={handleCalculateImc}>Calcular IMC</button>
+              <button onClick={handleCalculateImc} disabled={showSingleLevel !== null ? true : false}>Calcular IMC</button>
             </C.ContentLeftSide>
             <C.ContentRightSide>
               {!showSingleLevel && 
