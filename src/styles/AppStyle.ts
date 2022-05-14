@@ -70,4 +70,13 @@ export const ContentLeftSide = styled.div`
 export const ContentRightSide = styled.div`
     flex: 1;
     margin-left: 40px;
+
+    display: flex;
+`;
+export const GridRightSide = styled.div`
+  flex: 1;
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 `;

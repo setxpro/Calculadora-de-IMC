@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import * as C from './styles/AppStyle';
 
 import logo from './images/powered.png';
+import { Levels } from './helpers/imc';
+import GridItem from './Components/GridItem';
 
 const App: React.FC = () => {
 
@@ -47,7 +49,16 @@ const App: React.FC = () => {
 
               <button onClick={handleCalculateImc}>Calcular IMC</button>
             </C.ContentLeftSide>
-            <C.ContentRightSide>RIGHT</C.ContentRightSide>
+            <C.ContentRightSide>
+              <C.GridRightSide>
+                {Levels.map((item, index) => (
+                  <GridItem
+                    key={index}
+                    item={item}
+                  />
+                ))}
+              </C.GridRightSide>
+            </C.ContentRightSide>
         </C.Content>
     </C.Container>
   );
