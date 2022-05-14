@@ -13,8 +13,7 @@ const App: React.FC = () => {
   const [heightField, setHeightField] = useState<number>(0);
   const [weightField, setWeightField] = useState<number>(0);
 
-  const [showSingleLevel, setShowSingleLevel] = useState<LevelImc | null>(null)
-
+  const [showSingleLevel, setShowSingleLevel] = useState<LevelImc | null>(null);
 
   function handleCalculateImc() {
     if (heightField && weightField) {
@@ -77,7 +76,7 @@ const App: React.FC = () => {
               {showSingleLevel && 
               <C.ContentRightSideBig>
                 <C.ContentArrowLeftIcon onClick={handleBackButton}>
-                  <img src={ArrowLeftImage} alt="goback" width={25}/>
+                    <img src={ArrowLeftImage} alt="goback" width={25}/>
                 </C.ContentArrowLeftIcon>
                   <GridItem item={showSingleLevel}/>
                 </C.ContentRightSideBig>}
