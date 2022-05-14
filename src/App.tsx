@@ -2,23 +2,34 @@ import React, { useState } from 'react';
 import * as C from './styles/AppStyle';
 
 import logo from './images/powered.png';
-import { Levels } from './helpers/imc';
+import { calculateImc, Levels } from './helpers/imc';
 import GridItem from './Components/GridItem';
+import { LevelImc } from './types/imc';
+
+import ArrowLeftImage from './images/leftarrow.png';
 
 const App: React.FC = () => {
 
   const [heightField, setHeightField] = useState<number>(0);
   const [weightField, setWeightField] = useState<number>(0);
 
+  const [showSingleLevel, setShowSingleLevel] = useState<LevelImc | null>(null)
+
   function handleCalculateImc() {
     if (heightField && weightField) {
-       
+      setShowSingleLevel(calculateImc(heightField, weightField))
     } 
     else {
       alert('Insira ao menos uma altura e peso.')
     }
 
 
+  }
+
+  function handleBackButton() {
+    setShowSingleLevel(null);
+    setHeightField(0);
+    setWeightField(0);
   }
 
   return (
@@ -50,14 +61,23 @@ const App: React.FC = () => {
               <button onClick={handleCalculateImc}>Calcular IMC</button>
             </C.ContentLeftSide>
             <C.ContentRightSide>
-              <C.GridRightSide>
-                {Levels.map((item, index) => (
-                  <GridItem
-                    key={index}
-                    item={item}
-                  />
-                ))}
-              </C.GridRightSide>
+              {!showSingleLevel && 
+                <C.GridRightSide>
+                  {Levels.map((item, index) => (
+                    <GridItem
+                      key={index}
+                      item={item}
+                    />
+                  ))}
+                </C.GridRightSide>
+              }
+              {showSingleLevel && 
+              <C.ContentRightSideBig>
+                <C.ContentArrowLeftIcon onClick={handleBackButton}>
+                  <img src={ArrowLeftImage} alt="goback" width={25}/>
+                </C.ContentArrowLeftIcon>
+                  <GridItem item={showSingleLevel}/>
+                </C.ContentRightSideBig>}
             </C.ContentRightSide>
         </C.Content>
     </C.Container>

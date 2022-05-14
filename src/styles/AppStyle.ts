@@ -80,3 +80,30 @@ export const GridRightSide = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 `;
+
+export const ContentRightSideBig = styled.div`
+    flex: 1;
+    display: flex;
+
+`;
+export const ContentArrowLeftIcon = styled.div`
+    position: absolute;
+    background: #227C9D;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: -35px;
+    margin-top: 145px;
+
+    transition: all 1s ease;
+
+    &:hover {
+        opacity: .8;
+    }
+`;
